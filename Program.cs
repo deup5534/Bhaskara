@@ -16,13 +16,16 @@ double a, b, c, delta, x1, x2;
 Console.ForegroundColor = ConsoleColor.White;
 Console.Write("\ndigite o primeiro algarismo (a):");
 a = Convert.ToDouble(Console.ReadLine());
+ErroFeio("Digite o algarismo correto!");
 
 Console.Write("\ndigite o segundo algarismo (b):");
 b = Convert.ToDouble(Console.ReadLine());
+ErroFeio("Digite o algarismo correto!");
 
 Console.Write("\ndigite o terceiro algarismo (c):");
 c = Convert.ToDouble(Console.ReadLine());
 Console.ResetColor();
+ErroFeio("Digite o algarismo correto!");
 
 if (a == 0)
 {
@@ -48,3 +51,22 @@ if (a == 0)
         Console.ResetColor();
     }
     
+void ErroFeio(string mensagem)
+{
+    string mensagemAjustada = $"| {mensagem} |";
+    int qtDeTracos = mensagemAjustada.Length;
+    string barra = "".PadRight(qtDeTracos, '-');
+    
+    Console.WriteLine();
+    Console.WriteLine(barra);
+
+    Console.Write("| ");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write(mensagem);
+    Console.ResetColor();
+    Console.WriteLine(" |");
+
+    Console.WriteLine(barra);
+    Console.WriteLine();
+    Console.ReadKey();
+}
