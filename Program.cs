@@ -1,44 +1,43 @@
 ﻿Console.Clear();
 
-Console.WriteLine("Esse programa é tipo uma calculadora de Bhaskara.");
-
+enfeitinho("Esse programa é tipo uma calculadora de Bhaskara.\n");
 Console.ForegroundColor = ConsoleColor.Yellow;
-Console.WriteLine("Calcule as raízes de uma equação de segundo grau, utilizando o método de Bhaskara.");
+enfeitinho("Calcule as raízes de uma equação de segundo grau, utilizando o método de Bhaskara.\n");
 Console.ResetColor();
 
 Console.ForegroundColor = ConsoleColor.DarkGray;
-Console.WriteLine("\nPressione uma tecla para avançar...");
+enfeitinho("\nPressione uma tecla para avançar...\n");
 Console.ReadKey();
 Console.ResetColor();
 
 double a, b, c, delta, x1, x2;
 
 Console.ForegroundColor = ConsoleColor.White;
-Console.Write("\ndigite o primeiro algarismo (a):");
+enfeitinho("\ndigite o primeiro algarismo (a):");
 a = Convert.ToDouble(Console.ReadLine());
-ErroFeio("Digite o algarismo correto!");
 
-Console.Write("\ndigite o segundo algarismo (b):");
+enfeitinho("\ndigite o segundo algarismo (b):");
 b = Convert.ToDouble(Console.ReadLine());
-ErroFeio("Digite o algarismo correto!");
 
-Console.Write("\ndigite o terceiro algarismo (c):");
+enfeitinho("\ndigite o terceiro algarismo (c):");
 c = Convert.ToDouble(Console.ReadLine());
 Console.ResetColor();
-ErroFeio("Digite o algarismo correto!");
 
 if (a == 0)
 {
+
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("\nisso não é uma equação de segundo grau!\n");
+    enfeitinho("\nisso não é uma equação de segundo grau!\n");
     Console.ResetColor();
+
 }    
-    delta = b * b - 4 * a * c;
-    
-   if (delta < 0)
+
+delta = b * b - 4 * a * c;
+
+if (delta <= 0)
     {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine($"\nComo delta é = {delta:N2}, a equação não possui raízes reais.");
+        enfeitinho($"\nComo delta é = {delta:N2}, a equação não possui raízes reais.\n");
         Console.ResetColor();
     }
     else
@@ -47,26 +46,24 @@ if (a == 0)
         x2 = (-b - Math.Sqrt(delta)) / (2 * a);
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine($"x1 = {x1:N2} e x2 = {x2:N2}");
+        enfeitinho($"x1 = {x1:N2} e x2 = {x2:N2}\n");
         Console.ResetColor();
     }
     
-void ErroFeio(string mensagem)
+void enfeitinho(string mensagem)
+
+    {
+
+        int frase = mensagem.Length;
+
+for (int i = 0; i < frase; i++)
+
 {
-    string mensagemAjustada = $"| {mensagem} |";
-    int qtDeTracos = mensagemAjustada.Length;
-    string barra = "".PadRight(qtDeTracos, '-');
-    
-    Console.WriteLine();
-    Console.WriteLine(barra);
 
-    Console.Write("| ");
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.Write(mensagem);
-    Console.ResetColor();
-    Console.WriteLine(" |");
+Console.Write(mensagem[i]);
 
-    Console.WriteLine(barra);
-    Console.WriteLine();
-    Console.ReadKey();
+Thread.Sleep(55);
+
 }
+
+    }
